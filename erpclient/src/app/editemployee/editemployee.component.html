@@ -1,0 +1,174 @@
+<div id="container">
+  <div class="ui segments" >
+    <div class="heading nopagination" style="margin-bottom:25px;" >
+      <div class="pull-left ui breadcrumb large" ><span ></span><span
+          ></span><a href="#employee" class="section active" ><span style="font-size: 24px"
+            >Nhân viên</span><span > </span><span
+            ></span></a><span ></span><span
+          ></span></div>
+      <ul class="headingtabs" >
+        <li ><a href="#" class="active" >
+              <b style="font-style: oblique; font-size: 17px">Chỉnh sửa</b><span ></span></a></li>
+        <li><a (click)="delete()" class="active" style="background: crimson;color: cornsilk">
+            <b style="font-style: oblique; font-size: 16px">Xóa</b><span></span></a></li>
+      </ul>
+      <div style="clear:right;" ></div>
+    </div>
+    <div class="ui segment" >
+      <form class="ui form" autocomplete="on" [formGroup]="employeeFormedit">
+        <div class="fields" >
+          <div class="field four wide hideonsmall" >
+            <h4 ><strong >Thông tin cá nhân</strong></h4>
+            <p ></p>
+          </div>
+          <div class="field twelve wide" >
+            <!-- <div class="fields" >
+              <div class="field wide required four" ><label
+                  >Họ tên</label><input name="fullname" [(ngModel)]="employee.fullname"></div>
+            </div> -->
+            <mat-form-field style="width:230px !important">
+              <mat-label>Họ & Tên</mat-label>
+              <input matInput="text" formControlName="fullname" placeholder="Họ & Tên" value="{{ employee?.employee.fullname }}" name="fullname" >
+            </mat-form-field>
+            <div class="fields" >
+              <div class="required four wide field" >
+                <!-- <label
+                  >Email</label>
+                  <input name="email" [(ngModel)]="employee.workEmail" type="text" class="red"> -->
+                  <mat-form-field style="width:230px !important">
+                      <mat-label>Email</mat-label>
+                      <input matInput type=email formControlName="email" placeholder="Email" name="email" value="{{ employee?.employee.email }}">
+                    </mat-form-field>
+              </div>
+              <div class=" four  wide field" >
+                <!-- <label >Điện
+                  thoại</label>
+                  <input name="phone" [(ngModel)]="employee.workPhone" type="text" > -->
+                  <mat-form-field style="width:230px !important">
+                      <mat-label>Điện thoại</mat-label>
+                      <input matInput type=tel formControlName="phone" placeholder="Điện thoại" formControlName="phone" value="{{ employee?.employee.phone }}">
+                    </mat-form-field>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui divider" ></div>
+        <div class="fields" >
+          <div class="field four wide hideonsmall" >
+            <h4 ><strong >Thông tin phòng ban</strong></h4>
+            <p >Thông tin phòng ban trực thuộc</p>
+          </div>
+          <div class="field twelve wide">
+            <div class="fields">
+              <div class=" four wide field">
+                <mat-list style="width:230px !important">
+                  <mat-list-item *ngFor="let department of employee?.employee.departments">
+                    <mat-icon matListIcon>location_city</mat-icon>
+                    <h3 matLine> {{department?._id}} </h3>
+                    <p matLine>
+                      <a routerLink="/department/edit/{{ department?._id }}">
+                      <span>{{department?.title}}</span>
+                    </a>
+                    </p>
+                  </mat-list-item>
+                </mat-list>
+                </div>
+            </div>
+            <!-- <div class="fields">
+              <div class="five wide field" >
+                
+              </div> 
+              <div class="four wide field">
+                </div>
+            </div> -->
+          </div>
+        </div>        
+        <div class="ui divider" ></div>
+        <div class="fields" >
+          <div class="field four wide hideonsmall" >
+            <h4 ><strong >Thông tin cập nhật</strong></h4>
+            <!-- <p >Thông tin phòng ban trực thuộc</p> -->
+          </div>
+          <div class="field twelve wide" >
+            <div class="fields" >
+              <div class=" four  wide field">
+                  <label >Phòng
+                      ban</label>
+                      <div class="ui undefined search selection">
+                          <div ng-controller="AppCtrl" class="menu transaction">
+                              <mat-form-field class="ca80" style="width:230px !important">
+                                  <mat-label>Chọn phòng ban</mat-label>
+                                  <mat-select multiple name="departments" formControlName="departments">
+                                     <mat-option *ngFor="let item of departments?.departments.docs" [value]="item"> {{item?.title}}</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <div style="line-height:1.2;margin-top:5px;color:red;font-size:11px;" >
+                                    Chọn một phòng ban để cập nhật nhân viên.</div>
+                            </div>
+                      </div>
+                </div>
+              <div class="four wide field">
+                  <label>Loại
+                      hình công việc</label>
+                  <mat-form-field style="width:230px !important">
+                  <mat-label>Chọn loại
+                      hình công việc</mat-label>
+                  <mat-select formControlName="jobType">
+                    <mat-option  value="Nhân viên chính thức">
+                        Nhân viên chính thức
+                    </mat-option>
+                    <mat-option  value="Bán thời gian">
+                        Bán thời gian
+                    </mat-option>
+                    <mat-option  value="Thử việc">
+                        Thử việc
+                    </mat-option>
+                    <mat-option  value="Làm thêm ngoài giờ">
+                        Làm thêm ngoài giờ
+                    </mat-option>
+                    <mat-option  value="Nhân viên thời vụ">
+                        Nhân viên thời vụ
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                </div>
+            </div>
+            <div class="fields">
+              <div class="five wide field" >
+                
+              </div> 
+              <div class="four wide field">
+                </div>
+            </div>
+            <div class="fields" >
+              <div class="four wide field" ><label ><span
+                    >ID Nội bộ</span><a class="icon tc-info"
+                    title="Nếu công ty của bạn / nhóm đang chạy (hoặc có) một hệ thống để quản lý tất cả các tài khoản, trường này sẽ lưu trữ ID người dùng của hệ thống hiện tại của bạn. (Cho phép A-Z, 0-9 ký tự). Vídụ: E16217, CE40128 ..."
+                    ></a></label>
+                <div class="ui right labeled input" ><input name="internalid"
+                    type="text" disabled>
+                  <div class="ui grey label" >@ait-it</div>
+                </div>
+              </div>
+              <!-- <div class="required four  wide field" ><label
+                  >Chức vụ</label><input name="jobtitle" type="text" value=""
+                  ></div> -->
+            </div>
+          </div>
+        </div>
+        <div class="fields fieldaction" >
+          <div class="field wide hideonsmall four" >
+            <p class="requirebox" ><span >* : </span><span
+                >Bắt buộc</span></p>
+          </div>
+          <div class="field wide two"><button class="ui button" (click)=cancel() style="font-size: 15px">Hủy</button>
+          </div>
+          <div class="field wide three" ><button class="ui teal button" (click)="onSubmit()" type="submit"
+              >Sửa</button></div>
+        </div>
+      </form>
+      <app-message></app-message>
+    </div>
+  </div>
+</div>
+

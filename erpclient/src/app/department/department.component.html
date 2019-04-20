@@ -1,0 +1,52 @@
+<div class="heading nopagination">
+  <div class="pull-left ui breadcrumb large"><a href="#setting/menu/id/other" class="section active">Cài đặt nhân
+      sự</a><i class="right tc-right icon divider"></i><a href="#department" class="section"><span>Phòng
+        ban</span><span> </span><span></span></a><span></span><span></span></div>
+  <ul class="headingtabs">
+    <li><a href="#" class="active"><span>Tất cả</span><span class="number">{{ departments?.departments.docs.length }}</span></a></li><span></span>
+  </ul>
+  <div class="pull-right">
+    <div class="pull-right headingbuttons"><span></span><span></span><a routerLink="/department/add" class="mainbutton"><i
+          class="icon tc-plus-circle"></i><span class="hideonsmall">Tạo phòng
+          ban</span></a></div><span></span>
+  </div>
+</div>
+<div class="tcquerytaglist"></div>
+<div style="clear:both;"></div>
+
+<div class="ui segment" id="loadtable" style="display: block;">
+  <form class="ui form">
+    <div class="fields">
+      <div class="field twelve wide">
+        <div class="fields">
+          <div class="field four wide" id="companydepartment-wrapper">
+            <ul class="dep">
+              <li *ngFor="let department of departments?.departments.docs" class="dep departmentrow" id="departmentrowid-{{ department?._id }}">
+                  <span data-id="{{ department?._id }}">
+                    <a routerLink="/department/edit/{{ department?._id }}" class="dropdown-toggle" data-toggle="dropdown">
+                      <span class="icon tc-folder">&nbsp;
+                        {{ department?.title }}
+                        ({{department?.employees.length}}) 
+                      </span>
+                    </a>
+                  </span>
+                  <ul class="dep">
+                    <li *ngFor="let item of department?.childs" class="dep departmentrow" id="departmentrowid-{{ item?._id }}" title=" » nhóm phát triển">
+                      <span data-id="{{ item?._id }}">
+                        <a routerLink="/department/edit/{{ item?._id }}" class="dropdown-toggle" data-toggle="dropdown">
+                          <span class="icon tc-folder">
+                            {{item.title}} 
+                          </span>
+                        </a>
+                      </span>
+                      </li>
+                    </ul>
+                  </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

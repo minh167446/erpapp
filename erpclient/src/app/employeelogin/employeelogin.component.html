@@ -1,0 +1,32 @@
+  <div id="loginbox">
+    <div>
+      <div id="logindialog"
+        style="position: absolute; top: 0px; width: 100%; z-index: 1001;  margin-top: 284px;display: block !important;"
+        class="transition visible">
+        <div class="ui stackable four column grid">
+          <div class="column centered four wide">
+            <h1 style="text-align:center;margin-bottom:1em;"><img src="../../assets/favicon/logo-vuong.png"
+                width="240"> <br> Employee</h1>
+            <form class="ui form">
+              <app-message></app-message>
+              <div class="field required"><label>Email / Mã nhân viên</label><input class="form-control" name="email" type="text" id="email" [(ngModel)]="email">
+                </div>
+              <div class="field required"><label>Mật
+                  khẩu</label><input class="form-control" name="password" type="password" id="password" [(ngModel)]="password">
+              </div>
+              <button class="ui button teal" style="font-size:13px"
+                type="submit" (click)="login()">Đăng nhập
+              </button>
+              <a href="#user/forgotpass" class="ui floated right pull-right"
+                style="padding-top:0.6em;">Quên mật khẩu?
+              </a>
+              <div class="ui divider"></div>
+              <div><a routerLink="/" class="nocolor" style="color:#777;"
+                  title="Tạo tài khoản của bạn"><small></small></a></div>
+            </form>
+            <div class="ui relaxed divided list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

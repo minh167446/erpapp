@@ -1,0 +1,40 @@
+<div class="heading nopagination" style="margin-bottom:25px;">
+  <div class="pull-left ui breadcrumb large"><span></span><span></span><a href="#profile"
+      class="section active"><span>QUẢN TRỊ VIÊN: {{ (user | async)?.fullname}}  </span><span>
+      </span><span></span></a><span></span><span></span>
+  </div>
+  <ul class="headingtabs">
+    <li><a href="#" class="active"><span>Cập nhật</span><span></span></a></li>
+  </ul>
+  <div style="clear:right;"></div>
+</div>
+<div class="ui segment">
+  <form class="ui form">
+    <div class="fields">
+      <div class="field wide two">
+        <div id="profile-avatar" >
+          <div class="avatar-image" style="padding-left: 18px">
+            <img src="../../assets/img/avatar.png" alt="">
+              </div>
+          <div class="avatar-buttons" >
+            <div id="uploadcomponent" class="ui fluid action input" ><input readonly=""
+                placeholder="Chọn file" type="text" ><label
+                class="ui labeled icon teal button" ><i class="tc-upload icon"
+                  ></i><span >Chọn
+                  file</span><input type="file" name="file" id="file" style="display:none;"
+                  ></label></div>
+          </div>
+        </div>
+      </div>
+      <div class="field wide fourteen">
+        <div class="fields">
+          <div class="field wide readonly eight"><label><span>Email đăng nhập</span><span> (</span><a
+                href="#profile/changepassword" style="margin-top:20px;"><small>Đổi mật
+                  khẩu</small></a><span>)</span></label><input disabled="" readonly="" value="{{ (user | async)?.email }}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div></div>

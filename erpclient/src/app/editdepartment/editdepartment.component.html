@@ -1,0 +1,116 @@
+<div id="container">
+  <div class="ui segments">
+    <div class="heading nopagination" style="margin-bottom:25px;">
+      <div class="pull-left ui breadcrumb large"><span></span><span></span><a href="#employee"
+          class="section active"><span style="font-size: 24px">Phòng ban</span><span> </span><span></span></a><span></span><span></span></div>
+      <ul class="headingtabs">
+          <!-- <div class="field wide one"><button class="ui button" (click)="delete()" style="background: crimson;font-size: 15px">Xóa</button>
+          </div> -->
+        <li><a href="#" class="active">
+            <b style="font-style: oblique; font-size: 17px">Chỉnh sửa</b><span></span></a></li>
+        <li><a (click)="delete()" class="active" style="background: crimson;color: cornsilk">
+            <b style="font-style: oblique; font-size: 16px">Xóa</b><span></span></a></li>
+      </ul>
+      <div style="clear:right;"></div>
+    </div>
+    <div class="ui segment">
+      <div class="ui segment">
+        <form class="ui form"><input type="hidden" value="">
+          <div class="fields">  
+            <div class="field four wide hideonsmall">
+              <h4><strong>Thông tin phòng ban</strong></h4>
+              <p></p>
+            </div>
+            <div class="field twelve wide">
+              <form class="ui form" autocomplete="on" [formGroup]="deptFormedit" (ngSubmit)="onSubmit()"
+                id="add-depart-form">
+                <div class="field required">
+                  <label>Tên phòng ban</label>
+                  <mat-form-field style="width:230px !important">
+                    <input matInput formControlName="title" name="title" 
+                    value="{{ department?.department.title }}">
+                  </mat-form-field>
+                </div>
+                <div class="field required">
+                  <label>Mô tả </label>
+                  <mat-form-field style="width:300px !important">
+                    <textarea matInput formControlName="description" name="description"
+                      value="{{ department?.department.description }}"></textarea>
+                  </mat-form-field>
+                </div>
+                <div class="field required">
+                  <label>Địa chỉ</label>
+                  <mat-form-field style="width:230px !important">
+                    <input matInput formControlName="location" name="location"
+                      value="{{ department?.department.location }}">
+                  </mat-form-field>
+                </div>
+                <!-- <div class="field wide" >
+                      <label >Thuộc Phòng Ban</label>
+                      <mat-form-field>
+                          <mat-select  placeholder="Chọn Phòng ban" formControlName="parent_id">
+                            <mat-option *ngFor="let department of departments.departments?.docs" value="{{ department?._id }}">{{ department?.title }}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    </div> -->
+              </form>
+            </div>
+          </div>
+          <div class="fields">
+            <div class="field four wide hideonsmall">
+              <h4><strong>Danh sách nhân viên</strong></h4>
+              <p></p>
+            </div>
+            <div class="field four wide">
+              <!-- <div class="fields"> -->
+                  <!-- <ul class="dep" *ngIf="department?.department.employees !== 0">
+                    <li *ngFor="let employee of department?.department.employees" class="dep departmentrow"
+                      id="departmentrowid-{{ department?._id }}">
+                      <span data-id="{{ employee?._id }}">
+                        <a routerLink="/employee/edit/{{ employee?._id }}" class="dropdown-toggle"
+                          data-toggle="dropdown">
+                          <span class="icon tc-folder">&nbsp;
+                            {{ employee?.fullname }}
+                          </span>
+                        </a>
+                      </span>
+                    </li>
+                  </ul>
+                  <ul class="dep" *ngIf="department?.department.employees === 0">
+                      <li ><span><h3>Chưa thêm nhân viên nào!</h3></span></li>
+                  </ul> -->
+                  <mat-list style="width:230px !important">
+                    <mat-list-item *ngFor="let employee of department?.department.employees">
+                      <mat-icon matListIcon>account_circle</mat-icon>
+                      <h3 matLine> {{employee?._id}} </h3>
+                      <p matLine>
+                        <a routerLink="/employee/edit/{{ employee?._id }}">
+                        <span>{{employee?.fullname}}</span>
+                      </a>
+                      </p>
+                        <!-- <button mat-button style="color:grey;padding:0 5px 0 5px;cursor:pointer;" (click)="openDialog()" (click)="delete()"  title="Nhấn vào đây để xóa dòng dữ liệu này..">XÓA</button> -->
+                      <a
+                        (click)="delete_emp()" [attr.id]="employee?._id" 
+                        style="color:red;padding:0 5px 0 5px;cursor:pointer;"
+                        title="Nhấn vào đây để xóa dòng dữ liệu này.." class=""><small>XÓA</small>
+                      </a>
+                    </mat-list-item>
+                  </mat-list>
+              <!-- </div> -->
+            </div>
+          </div>
+          <div class="fields fieldaction">
+            <div class="field wide hideonsmall four">
+              <p class="requirebox"><span>* : </span><span>Bắt buộc</span></p>
+            </div>
+            <div class="field wide one"><button class="ui button" (click)="cancel()" style="font-size: 15px">Hủy</button>
+            </div>
+            <div class="field wide two"><button class="ui teal button" (click)="onSubmit()"
+                type="submit">Lưu</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

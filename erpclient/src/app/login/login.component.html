@@ -1,0 +1,40 @@
+  <div id="body" style="position: relative;" class="box1200">
+    <div id="sidebar"></div>
+    <div id="container"></div>
+    <div id="body-loader" class="tc-loader ui inverted dimmer">
+      <div class="ui large text loader">Loading...</div>
+    </div>
+  </div>
+  <div id="settingpagemenu" class="hide"></div>
+  <div id="loginbox">
+    <div>
+      <div id="logindialog"
+        style="position: absolute; top: 0px; width: 100%; z-index: 1001;  margin-top: 284px;display: block !important;"
+        class="transition visible">
+        <div class="ui stackable four column grid">
+          <div class="column centered four wide">
+            <h1 style="text-align:center;margin-bottom:1em;"><img src="../../assets/favicon/logo-vuong.png"
+                width="240"><br> Admin</h1>
+            <form class="ui form">
+              <app-message></app-message>
+              <div class="field required"><label>Email / Mã quản trị viên</label><input class="form-control" name="email" type="text" id="email" [(ngModel)]="email">
+                </div>
+              <div class="field required"><label>Mật
+                  khẩu</label><input class="form-control" name="password" type="password" id="password" [(ngModel)]="password">
+              </div>
+              <button class="ui button teal" style="font-size:13px"
+                type="submit" (click)="login()">Đăng nhập
+              </button>
+              <a href="#user/forgotpass" class="ui floated right pull-right"
+                style="padding-top:0.6em;">Quên mật khẩu?
+              </a>
+              <div class="ui divider"></div>
+              <div><a routerLink="/employee/login" class="nocolor" style="color:#777;"
+                  title="Tạo tài khoản của bạn"><small><span>>> </span><span>Đăng nhập nhân viên</span></small></a></div>
+            </form>
+            <div class="ui relaxed divided list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

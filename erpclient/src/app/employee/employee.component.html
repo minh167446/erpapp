@@ -1,0 +1,178 @@
+        <div id="page">
+          <div class="heading">
+            <div class="pull-left ui breadcrumb large"><span></span><span></span><a href="#employee"
+                class="section"><span style="font-size: 24px">Nhân viên</span><span> </span><span></span></a><span></span><span></span></div>
+            <ul class="headingtabs">
+              <li><a href="#" class="active"><span>Tất cả</span><span class="number">{{ employees?.employees.docs.length }}</span></a></li>
+              <li class="filtertogglewrapper "><a href="#" class="filtertoggle"
+                  title="Bật / Tắt chức năng tìm kiếm"><span class="hideonsmall">Bộ lọc &amp; tìm kiếm...</span><i
+                    class="icon tc-search onlyonsmall"></i></a></li>
+            </ul>
+            <div class="pull-right">
+              <div class="pull-right headingbuttons"><span></span><span></span><a routerLink="/employee/add"
+                  class="mainbutton"><i class="icon tc-plus-circle"></i><span class="hideonsmall">Thêm
+                    nhân viên mới</span></a><a href="javascript:void(0)" class="mytip_onpage hideonsmall"><i
+                    class="icon tc-upload"></i><span class="hideonsmall">Import</span></a>
+                <div class="ui pointing top right dropdown" tabindex="0"><span class="text"></span>
+                  <div class="menu" tabindex="-1"><a href="#employee/import" class="item"
+                      title="Import danh sách nhân viên"><i class="icon tc-upload"></i><span>Import danh sách nhân
+                        viên</span></a><a href="#employeemore/import" class="item" title="Import sơ yếu lý lịch"><i
+                        class="icon tc-upload"></i><span>Import sơ
+                        yếu lý lịch</span></a><a href="#employee/importoffice" class="item"
+                      title="Import chuyển công tác"><i class="icon tc-upload"></i><span>Import
+                        chuyển công tác</span></a></div>
+                </div>
+              </div>
+              <div class="paginationwrapper ">
+                <div class="ui pagination small menu" ><a data-gotopage="0" href="#"
+                    class="item disabled" ><i class="tc-left icon"
+                      ></i></a>
+                  <div class="active item center aligned" ><a href="#"
+                      ><span ><span
+                          >Trang</span><span >
+                          &nbsp;</span></span><span >1</span><span class="total"
+                        ><span > / </span><span
+                          >{{ employees?.employees.pages }}</span></span></a>
+                    <div class="hide" >
+                      <div class="ui small action input" ><input type="text"
+                          style="width:40px;border-width:0;padding-left:5px;padding-right:5px;text-align:center;"
+                          ><button class="ui small teal right labeled icon button"
+                          style="background:#ddd;color:#555;padding-left:10px !important;padding-right:45px !important;"
+                          ><i class="tc-arrowright icon"
+                            style="color:#fff;margin-top:0 !important;"
+                            ></i><span
+                            >/&nbsp;</span><span
+                            >1</span></button></div>
+                    </div>
+                  </div><a data-gotopage="2" class="item" ><i
+                      class="tc-right icon" ></i></a>
+                      <!-- (click)=toNext() -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tcquerytaglist"></div>
+          <div style="clear:both;"></div>
+
+          <div style="padding-top: 0px; padding-bottom: 0px; display: block; min-height: 815px;"
+            class="ui segment tc-scrolled">
+            <table id="employeetable" style="margin:0;"
+              class="tctable ui small unstackable very basic  selectable table scrollbar undefined">
+              <thead>
+                <tr>
+                  <th class="collapsing" colspan="1">
+                    <div class="ui checkbox checkbox-action all"
+                      style="vertical-align:middle;font-size:11px;text-transform:none;">
+                      <input type="checkbox" tabindex="0" class="hidden"><label></label>
+                    </div>
+                  </th>
+                  <th><a class="sortable mytip" href="javascript:(void(0))" data-sortby="id" data-nameorigin="SID"
+                      data-hasqtip="6" oldtitle="System ID" title="">SID</a></th>
+                  <th></th>
+                  <th>Tên</th>
+                  <th>Văn phòng làm việc</th>
+                  <th>Cấp bậc</th>
+                  <th><span>Loại hình công việc</span><span>&nbsp;</span></th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th class="col_status">Trạng thái</th>
+                  <th class="collapsing">Người tạo</th>
+                  <th class="col_datetime">Ngày tạo</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let employee of employees?.employees.docs">
+                  <td class="collapsing">
+                    <div class="ui checkbox checkbox-action" style="font-size:11px;">
+                      <input type="checkbox" value="18488" tabindex="0" class="hidden"><label></label></div>
+                  </td>
+                  <td><a routerLink="employee/detail/{{ employee?._id }}" class="mytip" data-hasqtip="12"
+                      oldtitle="Xem thông tin chi tiết" title="">18488</a></td>
+                  <td class="collapsing"><a href="/employee/edit/{{ employee?._id }}"><img class="cellavatar"
+                        style="width:32px;height:32px;"
+                        src="https://api.teamcrop.com/v1/photoavatar/t/e77773/dc652/40.jpg"></a></td>
+                  <td><a routerLink="/employee/detail/{{ employee?._id }}" class="mytip" data-hasqtip="13"
+                      oldtitle="Xem thông tin chi tiết"
+                      title=""><strong>{{ employee?.fullname }}</strong></a><span></span><br><span><span>
+                      </span><span style="color:#999;">@</span><span>
+                      </span><span>{{ employee.departments[0]?.title }}</span></span></td>
+                  <td>Văn phòng chính</td>
+                  <td>Mới tốt nghiệp / Thực tập</td>
+                  <td>{{ employee?.jobType }}</td>
+                  <td><span>{{ employee?.email }}</span><br><span></span></td>
+                  <td>{{ employee?.phone }}</td>
+                  <td><span class="ui small label simple green">Có hiệu lực</span></td>
+                  <td>minh nguyễn</td>
+                  <td><span class=""
+                      title="{{ employee?.hired_at }}">{{ employee?.hired_at | date:'MM/dd/yyyy' }}</span>
+                  </td>
+                  <td class="collapsing"><span>
+                    <a routerLink="/employee/edit/{{ employee?._id }}" style="padding:0 5px 0 5px;"
+                        title="Nhấn vào đây để cập nhật dữ liệu" class=""><small>SỬA</small>
+                      </a>
+                      <span>
+                          <!-- <button mat-button style="color:grey;padding:0 5px 0 5px;cursor:pointer;" (click)="openDialog()" (click)="delete()"  title="Nhấn vào đây để xóa dòng dữ liệu này..">XÓA</button> -->
+                        <a
+                          (click)="delete()" [attr.id]="employee?._id" (click)="get_id($event)"
+                          style="color:grey;padding:0 5px 0 5px;cursor:pointer;"
+                          title="Nhấn vào đây để xóa dòng dữ liệu này.." class=""><small>XÓA</small>
+                        </a>
+                      </span>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th class="collapsing" colspan="1">
+                    <div class="ui checkbox checkbox-action all"
+                      style="vertical-align:middle;font-size:11px;text-transform:none;">
+                      <input type="checkbox" tabindex="0" class="hidden"><label></label>
+                    </div>
+                  </th>
+                  <th colspan="7"><strong style="margin-right:1em;"><span>Đã
+                        chọn</span><span>&nbsp;</span><span>0</span><span>&nbsp;</span><span>phần
+                        tử</span></strong><select
+                      style="vertical-align:middle;min-height:0 !important;height:35px;margin-right:5px;"
+                      class="ui small selection dropdown">
+                      <option value="">--Chọn hành động--</option>
+                      <option value="1">Có hiệu lực</option>
+                      <option value="3">Vô hiệu lực</option>
+                      <option value="5">Xóa</option>
+                    </select><a class="ui teal button disabled"
+                      style="vertical-align:middle;height:30px;line-height:30px;padding:0 10px;font-size:1em;">Thực
+                      hiện</a></th>
+                  <th colspan="6" class="right aligned">
+                    <div><a class="ui mini button labeled icon teal" href="#"><i class="icon tc-download"></i><span>Xuất
+                          dữ
+                          liệu</span><span><span> (</span><span>{{ employees?.employees.docs.length }}</span><span>
+                          </span><span>dòng</span><span>)</span></span></a>
+                      <div></div>
+                    </div>
+                  </th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <table class="tctable ui small unstackable very basic  selectable table scrollbar undefined tctableclone"
+            style="width: 1337px; display: none;">
+            <thead>
+              <tr>
+                <th class="collapsing" colspan="1" style="width: 36px;"></th>
+                <th style="width: 55px;">SID</th>
+                <th style="width: 48px;"></th>
+                <th style="width: 186px;">Tên</th>
+                <th style="width: 148px;">Văn phòng làm việc</th>
+                <th style="width: 77px;">Cấp bậc</th>
+                <th style="width: 150px;">Loại hình công việc&nbsp;</th>
+                <th style="width: 171px;">Email</th>
+                <th style="width: 75px;">ID Nội bộ</th>
+                <th class="col_status" style="width: 100px;">Trạng thái</th>
+                <th class="collapsing" style="width: 81px;">Người tạo</th>
+                <th class="col_datetime" style="width: 130px;">Ngày tạo</th>
+                <th style="width: 80px;"></th>
+              </tr>
+            </thead>
+          </table>

@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+.custom-dialog-container  .mat-dialog-container {
+    width: auto;
+    height: 15%;
+}
+
+#register {
+    margin: auto;
+    padding-top: 110px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

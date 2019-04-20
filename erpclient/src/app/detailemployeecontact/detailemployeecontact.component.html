@@ -1,0 +1,381 @@
+<div class="heading nopagination" style="margin-bottom:25px;">
+    <div class="pull-left ui breadcrumb large"><span></span><span></span><a href="#employee" class="section active"><span
+          style="font-size: 24px">Nhân viên</span><span> </span><span></span></a><span></span><span></span>
+    </div>
+    <ul class="headingtabs">
+      <li><a href="#" class="active"><span>Chi Tiết</span><span></span></a></li>
+    </ul>
+    <div style="clear:right;"></div>
+  </div>
+  <div class="ui segment form">
+    <div class="fields">
+      <div class="field sixteen wide">
+        <div class="ui items">
+          <div class="item">
+            <div class="image"><img src="https://api.teamcrop.com/v1/photoavatar/t/e77773/dc652/40.jpg"
+                style="width:175px;height:175px"></div>
+            <div class="content"><a class="header">{{ employee?.employee.fullname }} </a>
+              <div class="meta"><span>Văn phòng
+                  chính</span><span> - </span><span>{{ employee?.employee.departments[0].title }}</span></div>
+              <div class="meta"><span>Mới tốt nghiệp /
+                  Thực tập</span><span> - </span><span>{{ employee?.employee.jobType }}</span></div>
+              <div class="description"><span>{{ employee?.employee.email }}</span><span>
+                </span><span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="field sixteen wide">
+          <div class="ui pointing secondary menu">
+            <mat-tab-group animationDuration="300ms">
+              <mat-tab label="Sơ yếu lý lịch">
+                <div class="ui grid" style="margin-top: 15px">
+                  <div class="two wide column">
+                    <div class="ui vertical labeled icon menu">
+                      <a class="item" routerLink="/employee/detail/{{ employee?.employee._id }}" data-block="blockprivate"><i class="icon tc-user"></i><span>Cá
+                          nhân</span>
+                      </a>
+                      <a class="item" routerLink="/employee/detail/contact/{{ employee?.employee._id }}" data-block="blockcontact"><i
+                          class="icon tc-home"></i><span>Liên lạc</span>
+                      </a>
+                      <a class="item" routerLink="/employee/detail/mature/{{ employee?.employee._id }}" data-block="blockstudy"><i
+                          class="icon tc-briefcase"></i><span>Chuyên môn</span>
+                      </a>
+                      <a class="item" routerLink="/employee/detail/healthy/{{ employee?.employee._id }}" data-block="blockhealth"><i
+                          class="icon tc-heartfill"></i><span>Sức khỏe</span>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="fourteen wide column" id="employeedetail">
+                    <div class="ui segment">
+                      <div class="ui segment" style="padding-top:8px;padding-bottom:8px; font-size: 15px">
+                        <form class="ui form">
+                          <!-- <div>
+                            <div class="two fields">
+                              <div class="two wide field"><label>Nơi sinh</label></div>
+                              <div class="eight wide field"><input name="birth_place" type="text"></div>
+                            </div>
+                            <div class="two fields">
+                              <div class="two wide field"><label>Quê quán</label></div>
+                              <div class="eight wide field"><input name="origin_place" type="text"></div>
+                            </div>
+                            <div class="two fields">
+                              <div class="two wide field"><label>Dân tộc</label></div>
+                              <div class="eight wide field"><input name="ethnic_group" type="text"></div>
+                            </div>
+                            <div class="two fields">
+                              <div class="two wide field"><label>Tôn giáo</label></div>
+                              <div class="eight wide field"><input name="religious" type="text"></div>
+                            </div>
+                            <div class="two fields">
+                              <div class="two wide field"><label>Địa chỉ thường trú</label></div>
+                              <div class="eight wide field"><input name="normal_address" type="text"></div>
+                            </div>
+                            <div class="two fields">
+                              <div class="two wide field"><label>Địa chỉ tạm trú</label></div>
+                              <div class="eight wide field"><input name="temporary_address" type="text"></div>
+                            </div>
+                            <div class="two fields">
+                              <div class="two wide field"><label>Ngày sinh</label></div>
+                              <div class="eight wide field">
+                                <div style="margin-right:0;" class="ui left  icon input bootstrap_datepicker_wrapper">
+                                  <input type="text" readonly="" size="10"><i class="icon tc-calendar"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div> -->
+                          <!-- <div >
+                          <div class="two fields" >
+                            <div class="two wide field" ><label
+                                >Số bảo hiểm</label></div>
+                            <div class="eight wide field" ><input name="ensurance_number"
+                                type="text" ></div>
+                          </div>
+                          <div class="two fields" >
+                            <div class="two wide field" ><label
+                                >Ngày tham gia bảo hiểm</label></div>
+                            <div class="eight wide field" >
+                              <div style="margin-right:0;" class="ui left  icon input bootstrap_datepicker_wrapper"
+                                ><input type="text"
+                                    readonly="" size="10"><i
+                                  class="icon tc-calendar" ></i></div>
+                            </div>
+                          </div>
+                          <div class="two fields" >
+                            <div class="two wide field" ><label
+                                >Địa chỉ đăng ký</label></div>
+                            <div class="eight wide field" ><input name="ensurance_address"
+                                type="text" ></div>
+                          </div>
+                          <div class="two fields" >
+                            <div class="two wide field" ><label
+                                >Nơi khám chữa bệnh</label></div>
+                            <div class="eight wide field" ><input name="ensurance_hospital"
+                                type="text" ></div>
+                          </div>
+                          <div class="two fields" >
+                            <div class="two wide field" ><label
+                                >Sức khỏe</label></div>
+                            <div class="eight wide field" ><input name="health" type="text"
+                                ></div>
+                          </div>
+                          <div class="two fields" >
+                            <div class="two wide field" ><label
+                                >Cân nặng</label></div>
+                            <div class="eight wide field" >
+                              <div class="ui right labeled input" ><input name="weight"
+                                  type="text" >
+                                <div class="ui basic label" >kg</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="two fields" >
+                            <div class="two wide field" ><label
+                                >Chiều cao</label></div>
+                            <div class="eight wide field" >
+                              <div class="ui right labeled input" ><input name="height"
+                                  type="text" >
+                                <div class="ui basic label" >cm</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div> -->
+                                    <div>
+                                      <div class="two fields" >
+                                        <div class="two wide field" ><label
+                                            >Mã số thuế</label></div>
+                                        <div class="eight wide field" ><input name="tax_number"
+                                            type="text" ></div>
+                                      </div>
+                                      <div class="two fields" >
+                                        <div class="two wide field" ><label
+                                            >Số CMND</label></div>
+                                        <div class="eight wide field" ><input name="social_number"
+                                            type="text" ></div>
+                                      </div>
+                                      <div class="two fields" >
+                                        <div class="two wide field" ><label
+                                            >Nơi cấp CMND</label></div>
+                                        <div class="eight wide field" ><input
+                                            name="social_number_address" type="text" ></div>
+                                      </div>
+                                      <div class="two fields" >
+                                        <div class="two wide field" ><label
+                                            >Ngày cấp CMND</label></div>
+                                        <div class="eight wide field" >
+                                          <div style="margin-right:0;" class="ui left  icon input bootstrap_datepicker_wrapper"
+                                            ><input type="text" 
+                                              readonly="" size="10"><i class="icon tc-calendar" ></i>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!-- <div >
+                                      <div class="two fields" >
+                                        <div class="two wide field" ><label
+                                            >Ngoại ngữ</label></div>
+                                        <div class="eight wide field" ><input name="foreign_language"
+                                            type="text" ></div>
+                                      </div>
+                                      <div class="two fields" >
+                                        <div class="two wide field" ><label
+                                            >Trình độ tin học</label></div>
+                                        <div class="eight wide field" ><input name="computer" type="text"
+                                            ></div>
+                                      </div>
+                                      <div class="two fields" >
+                                        <div class="two wide field" ><label
+                                            >Trình độ văn hóa</label></div>
+                                        <div class="eight wide field" ><input name="education_level"
+                                            type="text" ></div>
+                                      </div>
+                                      <div class="two fields" >
+                                        <div class="two wide field" ><label
+                                            >Trình độ học vấn</label></div>
+                                        <div class="eight wide field" ><input name="academic_level"
+                                            type="text" ></div>
+                                      </div>
+                                      <div class="two fields" >
+                                        <div class="two wide field" ><label
+                                            >Chuyên ngành</label></div>
+                                        <div class="eight wide field" ><input name="professional"
+                                            type="text" ></div>
+                                      </div>
+                                    </div> -->
+                          <div class="field" style="margin-bottom:8px;">
+                            <div class="two fields">
+                              <div class="two wide field"><label>&nbsp;</label></div>
+                              <div class="eight wide field"><button class="ui teal button " type="submit">Lưu</button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+              <mat-tab label="Tài khoản">
+                <div class="ui segments" style="margin-top: 15px; font-size: 15px">
+                  <div style="padding-top: 0px; padding-bottom: 0px; min-height: 864px;" class="ui segment tc-scrolled">
+                    <table id="employeetable" style="margin:0;"
+                      class="tctable ui small unstackable very basic  selectable table scrollbar undefined">
+                      <thead>
+                        <tr>
+                          <th>Tên ngân hàng</th>
+                          <th>Mã số tài khoản</th>
+                          <th>Ghi chú</th>
+                          <th>Trạng thái</th>
+                          <th class="col_action_2button"></th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table><br><a class="ui mini grey labeled icon button"><i class="icon tc-plus"
+                        title="Thêm mới tài khoản"></i><span>Thêm mới tài
+                        khoản</span></a>
+                  </div>
+                </div>
+              </mat-tab>
+              <mat-tab label="Quá trình làm việc">
+                <div class="ui segments" style="margin-top: 15px; font-size: 15px">
+                  <div style="padding-top: 0px; padding-bottom: 0px; min-height: 864px;" class="ui segment tc-scrolled">
+                    <table class="tctable ui small unstackable very basic  selectable table scrollbar undefined">
+                      <thead>
+                        <tr>
+                          <th>Thời gian</th>
+                          <th>Tiêu đề </th>
+                          <th>Chuyển trụ sở mới</th>
+                          <th>Chuyển phòng ban mới</th>
+                          <th>Chuyển chức vụ mới</th>
+                          <th>Chuyển loại hình công việc mới</th>
+                          <th>Chuyển cấp bậc mới</th>
+                          <th>File</th>
+                          <th class="col_action_2button"></th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table><a class="ui mini grey labeled icon button"><i style="margin-right:0px;" class="icon tc-plus"
+                        title="Thêm quá trình làm việc"></i><span>Thêm quá trình làm
+                        việc</span></a>
+                  </div>
+                  <div id="loaddetail"></div>
+                </div>
+              </mat-tab>
+              <mat-tab label="Hợp đồng">
+                <div class="ui segments" style="margin-top: 15px; font-size: 15px">
+                  <div style="padding-top: 0px; padding-bottom: 0px; min-height: 864px;" class="ui segment tc-scrolled">
+                    <table id="employeetable" style="margin:0;"
+                      class="tctable ui small unstackable very basic  selectable table scrollbar undefined">
+                      <thead>
+                        <tr>
+                          <th>Tên</th>
+                          <th>Số hợp đồng</th>
+                          <th>Loại hợp đồng</th>
+                          <th>Lương tổng</th>
+                          <th>Lương thực lãnh</th>
+                          <th><span>Ngày
+                              hiệu lực</span><span>&nbsp;</span></th>
+                          <th>Người đại diện công ty ký</th>
+                          <th>File</th>
+                          <th class="col_action_2button"></th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table><br><a class="ui mini grey labeled icon button"><i style="margin-right:0px;"
+                        class="icon tc-plus" title="Thêm mới hợp đồng"></i><span>Thêm mới hợp đồng</span></a>
+                  </div>
+                </div>
+              </mat-tab>
+              <mat-tab label="Chấm công">
+                <div class="ui segments" style="margin-top: 15px; font-size: 15px">
+                  <div style="padding-top: 0px; padding-bottom: 0px; min-height: 864px;" class="ui segment tc-scrolled">
+                    <table class="tctable ui small unstackable very basic  selectable table scrollbar undefined">
+                      <thead>
+                        <tr>
+                          <th>Ngày</th>
+                          <th>Trụ sở</th>
+                          <th>Ca</th>
+                          <th>Nhân viên</th>
+                          <th>Thời gian</th>
+                          <th>Ghi chú</th>
+                          <th>Thời lượng</th>
+                          <th>Trạng thái</th>
+                          <th>Xác nhận</th>
+                          <th>Địa chỉ IP</th>
+                          <th>Hình</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table><a href="#checkin/_s/creator_id/26718" class="ui mini basic blue button">Xem Thêm</a>
+                  </div><span></span>
+                </div>
+              </mat-tab>
+              <mat-tab label="Nghỉ phép">
+                  <div class="ui segments" style="margin-top: 15px;font-size: 15px">
+                      <div class="ui segment tctabledata tc-scrolled" style="min-height: 864px;">
+                        <table class="tctable ui small unstackable very basic  selectable table scrollbar undefined">
+                          <thead>
+                            <tr>
+                              <th width="200">Nhân viên</th>
+                              <th>Lý do</th>
+                              <th class="tcw100">Thời gian</th>
+                              <th>Trạng thái</th>
+                              <th>Ngày tạo</th>
+                            </tr>
+                          </thead>
+                          <tbody></tbody>
+                        </table><a href="#hrmleave/_s/creator_id/26718" class="ui mini basic blue button">Xem Thêm</a>
+                      </div>
+                    </div>
+              </mat-tab>
+              <mat-tab label="Khen thưởng kỉ luật">
+                  <div class="ui segments" style="margin-top: 15px; font-size: 15px">
+                      <div style="padding-top: 0px; padding-bottom: 0px; min-height: 864px;" class="ui segment tc-scrolled">
+                        <table class="tctable ui small unstackable very basic  selectable table scrollbar undefined">
+                          <thead>
+                            <tr>
+                              <th>Nhân viên</th>
+                              <th>Trụ sở</th>
+                              <th>Tiêu chí</th>
+                              <th>Điểm</th>
+                              <th>Người tạo</th>
+                              <th>Trạng thái</th>
+                              <th>Ngày tạo</th>
+                            </tr>
+                          </thead>
+                          <tbody></tbody>
+                        </table><a href="#employeepoint/_s/employee_id/26718" class="ui mini basic blue button">Xem Thêm</a>
+                      </div>
+                    </div>
+              </mat-tab>
+              <mat-tab label ="Lương">
+                  <div class="ui segments" style="margin-top: 15px; font-size: 15px">
+                      <div style="padding-top: 0px; padding-bottom: 0px; min-height: 864px;" class="ui segment tc-scrolled">
+                        <table class="tctable ui small unstackable very basic  selectable table scrollbar undefined"
+                          id="1554876276283">
+                          <thead>
+                            <tr>
+                              <th>Nhân viên</th>
+                              <th>Nguồn</th>
+                              <th>Tiêu đề phiếu lương</th>
+                              <th class="right aligned">Tổng lương</th>
+                              <th>Hình thức chi trả</th>
+                              <th>Kì lương</th>
+                              <th>Thứ tự trong kỳ lương</th>
+                              <th>Trạng thái</th>
+                              <th>Người tạo</th>
+                              <th>Ngày tạo</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody></tbody>
+                        </table><a href="#salary/_s/employee/26718" class="ui mini basic blue button">Xem Thêm</a>
+                      </div><span id="loaddetail"></span>
+                    </div>
+              </mat-tab> 
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
