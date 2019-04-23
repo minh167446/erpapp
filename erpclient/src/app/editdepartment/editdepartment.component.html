@@ -82,6 +82,9 @@
                   <mat-list style="width:230px !important">
                     <mat-list-item *ngFor="let employee of department?.department.employees">
                       <mat-icon matListIcon>account_circle</mat-icon>
+                      <!-- <mat-form-field>
+                        <input matInput [formControl]="departmentId" [value]="employee?._id">
+                      </mat-form-field> -->
                       <h3 matLine> {{employee?._id}} </h3>
                       <p matLine>
                         <a routerLink="/employee/edit/{{ employee?._id }}">

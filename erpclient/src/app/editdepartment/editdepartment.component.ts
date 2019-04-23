@@ -80,6 +80,10 @@ export class EditdepartmentComponent implements OnInit {
                                     .set('Authorization', `Bearer ${token}`) : null;
   }
 
+  trackByIndex(index: number, obj: any): any {
+    return index;
+  }
+
   delete() {
     Swal.fire({
       title: 'Bạn chắc chứ?',
@@ -111,6 +115,11 @@ export class EditdepartmentComponent implements OnInit {
     })
   }
 
+  // formEmpedit = new FormGroup({
+  //   departmentId: new FormControl(''),
+  //   employeeId: new FormControl('')
+  // }); 
+
   delete_emp() {
     Swal.fire({
       title: 'Bạn chắc chứ?',
@@ -121,17 +130,18 @@ export class EditdepartmentComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, Xóa nhân viên!'
     }).then((result) => {
-      // let options = { headers: this.deleteHeaders() };
-      // this.activatedRoute.params.subscribe(res => {
-      //   this.http.post(
-      //     `http://localhost:3000/api/departments/deleteEmployee`, options,
-      //   ).subscribe( res => {
-      //     console.log(res)
-      //   })
-      //   setTimeout(()=>{
-      //     this.router.navigateByUrl("/departments")
-      //   }, 4000);
-      // });
+
+      let options = { headers: this.deleteHeaders() };
+
+        this.http.post(
+          `http://localhost:3000/api/departments/deleteEmployee`, options,
+        ).subscribe( res => {
+          console.log(res)
+        })
+        setTimeout(()=>{
+          this.router.navigateByUrl("/departments")
+        }, 4000);
+
       if (result.value) {
         Swal.fire(
           'Đã Xóa!',

@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { PageEvent, MatTableDataSource, MatPaginator, MatDialog,  } from '@angular/material';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,7 +17,9 @@ export class EmployeeComponent implements OnInit {
   // total: number = 0;
   // limit: number = 5;
   // page: number = 1;
-
+  filter: boolean = true;
+  active: boolean =false;
+  key: string;
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(public dialog: MatDialog,private activatedRoute: ActivatedRoute,private http:HttpClient, private data: DataService, private router: Router) {}
   
@@ -42,6 +45,11 @@ export class EmployeeComponent implements OnInit {
     }
   }
 
+  showActive() {
+    this.active = !this.active;
+    this.filter = !this.filter;
+  }
+
   deleteHeaders() {
     const token = localStorage.getItem('token');
     return token ? new HttpHeaders()
@@ -52,6 +60,24 @@ export class EmployeeComponent implements OnInit {
     var target = event.target || event.srcElement; 
     var idAttr = target.attributes['id'];
     console.log(idAttr);
+ }
+
+ formSearch = new FormGroup({
+  keysearch: new FormControl('')
+  });
+
+ onSubmit() {
+  let key =this.formSearch.value;
+  let options = { headers: this.getHeaders() };
+  try {
+    this.http.post(
+      `http://localhost:3000/api/employees/search/` + key, this.formSearch.value, options,
+    ).subscribe( res => {
+      console.log(res)
+    })
+  } catch (error) {
+    console.log(error);
+  }
  }
 
   delete() {

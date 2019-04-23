@@ -16,7 +16,7 @@
               style="width:175px;height:175px"></div>
           <div class="content"><a class="header">{{ employee?.employee.fullname }} </a>
             <div class="meta"><span>Văn phòng
-                chính</span><span> - </span><span>{{ employee?.employee.departments[0].title }}</span></div>
+                chính</span><span> - </span><span *ngFor="let department of employee?.employee?.departments">{{ department.title }}<span> - </span></span></div>
             <div class="meta"><span>Mới tốt nghiệp /
                 Thực tập</span><span> - </span><span>{{ employee?.employee.jobType }}</span></div>
             <div class="description"><span>{{ employee?.employee.email }}</span><span>
