@@ -60,6 +60,7 @@ import { DetailemployeecontactComponent } from './detailemployeecontact/detailem
 import { DetailemployeematureComponent } from './detailemployeemature/detailemployeemature.component';
 import { DetailemployeehealthyComponent } from './detailemployeehealthy/detailemployeehealthy.component';
 import { EmployeeloginComponent } from './employeelogin/employeelogin.component';
+import { EmployeeAllrecordComponent } from './employee-allrecord/employee-allrecord.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { EmployeeloginComponent } from './employeelogin/employeelogin.component'
     DetailemployeematureComponent,
     DetailemployeehealthyComponent,
     EmployeeloginComponent,
+    EmployeeAllrecordComponent,
   ],
   imports: [
     BrowserModule,

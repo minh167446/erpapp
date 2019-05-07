@@ -1,4 +1,4 @@
-  <div id='dashboard'>
+  <!-- <div id='dashboard'>
     <div id="header" *ngIf="user" style="display: block !important;" class="transition visible">
       <div id="headerwrapper" class="box1200">
         <div class="pull-left hamburger"><a href=""><i class="icon tc-hamburger"></i></a></div>
@@ -12,7 +12,7 @@
               <button mat-button [matMenuTriggerFor]="afterMenu" style="color: cornsilk; font-size: 18px; font-style: oblique">{{ (user | async)?.fullname }}</button>
             <!-- <div class="text" id="headerfullname" type="button"><img src=""><span >{{ data?.user.fullname }}</span></div> -->
             
-            <mat-menu #afterMenu="matMenu" xPosition="after">
+            <!-- <mat-menu #afterMenu="matMenu" xPosition="after">
                 <button mat-menu-item>Tiếng Việt</button>
                 <button mat-menu-item>Tiếng Nhật</button>
                 <button mat-menu-item>Tiếng Anh</button>
@@ -30,84 +30,7 @@
               <div class="item"><a href="javascript:void(0)" (click)=logout()>Thoát</a></div>
             </div> -->
 
-          </div>
-          <div id="navheadingtoggle"><a class="toggle" href="#"><i class="icon tc-more"></i></a></div>
-        </div>
-        <div class="pull-left" id="viewtitle"><a href="#"></a></div>
-        <div class="navmenu">
-          <div class="navmenuinside">
-            <ul id="override_boostrap">
-              <li class="nav-item dropdown">
-                <a class=" nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false" id="headercompanyname">
-                  <small class="versionbadge"><span>v</span><span>0.1</span></small>
-                  <span>Aureole IT inc</span>
-                </a>
-                <div class="dropdown-menu" style="background-color:#3498db; color:cornsilk">
-                  <a class="dropdown-item" href="#"><i class="icon tc-home">&emsp;Dashboard</i></a>
-                  <a class="dropdown-item" href="#"><i class="icon tc-folder">&emsp;Tài liệu </i></a>
-                  <a class="dropdown-item" routerLink="/settings"><i class="icon tc-gear">&emsp;Cấu hình </i></a>
-                  <a class="dropdown-item" href="#"><i class="icon tc-question">&emsp;Trợ giúp</i></a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                  aria-expanded="false">Chấm công</a>
-                <div class="dropdown-menu" style="background-color:#3498db; color:cornsilk">
-                  <a class="dropdown-item" href="#"><i class="icon tc-plus-circle">&emsp;Chấm công</i></a>
-                  <a class="dropdown-item" href="#"><i class="icon tc-history">&emsp;Lịch sử</i></a>
-                  <a class="dropdown-item" href="#"><i class="icon tc-calendar-alt">&emsp;Lịch làm việc</i></a>
-                  <a class="dropdown-item" href="#"><i class="icon tc-barchart">&emsp;Báo cáo</i></a>
-                </div>
-              </li>
-              <li class="nav-item dropdown" >
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                  aria-expanded="false">Hộp thư</a>
-                <div class="dropdown-menu" style="background-color:#3498db; color:cornsilk">
-                  <a class="dropdown-item" href="#"><i class="icon tc-mail">&emsp;Hộp thư đến</i></a>
-                  <a class="dropdown-item" href="#"><i class="icon tc-arrowleft">&emsp;Đã gửi</i></a>
-                  <a class="dropdown-item" href="#"><i class="icon tc-compose">&emsp;Soạn thư</i></a>
-                </div>
-              </li>
-              <li class="nav-item dropdown"  >
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                  aria-expanded="false">Dự án</a>
-                <div class="dropdown-menu" style="background-color:#3498db; color:cornsilk">
-                  <a class="dropdown-item" href="#"><i class="icon tc-briefcase">&emsp;Các dự án</i></a>
-                  <a class="dropdown-item" href="#"><i class="icon tc-plus-circle">&emsp;Dự án mới</i></a>
-                </div>
-              </li>
-              <li ><a class="headermenu" href="#blog"><span>Blog</span></a></li>
-              <li class="nav-item dropdown" >
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                  aria-expanded="false">Học Trực Tuyến</a>
-                <div class="dropdown-menu" style="background-color:#3498db; color:cornsilk">
-                  <a class="dropdown-item" href="#"><i class="icon tc-book">&emsp;Tất cả KH</i></a>
-                  <a class="dropdown-item" href="#"><i class="icon tc-badge">&emsp;KH của tôi</i></a>
-                </div>
-              </li>
-              <li class="nav-item dropdown" >
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Nhân viên</a>
-                <div class="dropdown-menu" style="background-color:#3498db; color:cornsilk">
-                  <a class="dropdown-item" routerLink="/employee"><i class="icon tc-users"><span>&emsp;Nhân
-                        viên&emsp;</span></i></a>
-                  <a class="dropdown-item" href="#"><i class="icon tc-tag"><span>&emsp;Phiếu lương</span></i></a>
-                  <a class="dropdown-item" href="#"><i class="icon tc-belloff">&emsp;Nghỉ phép</i></a>
-                  <a class="dropdown-item" href="#"><i class="icon tc-starfill">&emsp;Chấm điểm</i></a>
-                </div>
-              </li>
-              <li id="headermenu_profile" style="display:none;"><a class="headermenu" href="#account"><span>Tài
-                    khoản</span></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div></div>
-        <div>
-        </div>
-      </div>
-    </div>
+
     <!-- <ng-template #other>
     <div id="header"  style="display: block !important;" class="transition visible">
       <div id="headerwrapper" class="box1200">
@@ -210,9 +133,86 @@
       </div>
     </div>
   </ng-template> -->
-    <div id="container">
-      <div class="ui segments" style="padding-top:40px">
+    <!-- <div id="container">
+      <div class="ui segments" style="padding-top:40px"> --> 
+          <header>
+              <nav class="o_main_navbar">
+                  <button aria-label="Toggle menu" class="fa fa-bars float-right d-block d-md-none o_mobile_menu_toggle" title="Toggle menu" type="button"></button>
+          
+                  <a class="o_menu_brand d-none" href="#" role="button"></a>
+                  <ul class="o_menu_sections d-none" role="menu"></ul>
+                  <ul class="o_menu_systray" role="menu"><li class="o_mail_systray_item o_no_notification">
+                      <a aria-expanded="false" class="dropdown-toggle o-no-caret" data-display="static" data-toggle="dropdown" href="#" role="button" title="Activities">
+                          <i aria-label="Activities" class="fa fa-clock-o" role="img"></i> <span class="o_notification_counter badge badge-pill">0</span>
+                      </a>
+                      <div class="o_mail_systray_dropdown dropdown-menu dropdown-menu-right" role="menu">
+                          <div class="o_mail_systray_dropdown_items">
+                  
+                      <div class="dropdown-item-text text-center o_no_activity">
+                          <span>No activities planned.</span>
+                      </div>
+                  
+                  
+              </div>
+                      </div>
+                  </li><li class="o_mail_systray_item">
+                      <a aria-expanded="false" class="dropdown-toggle o-no-caret" data-display="static" data-toggle="dropdown" href="#" role="button" title="Conversations">
+                          <i aria-label="Messages" class="fa fa-comments" role="img"></i> <span class="o_notification_counter badge badge-pill">1</span>
+                      </a>
+                      <div class="o_mail_systray_dropdown dropdown-menu dropdown-menu-right" role="menu">
+                          
+                          <div class="o_mail_systray_dropdown_top">
+                              <div>
+                                  <button class="btn btn-link o_filter_button active" role="tab" type="button"> All </button>
+                                  <button class="btn btn-link o_filter_button" data-filter="chat" role="tab" type="button"> Chat </button>
+                                  <button class="btn btn-link o_filter_button" data-filter="channels" role="tab" type="button"> Channels </button>
+                              </div>
+                              <button class="btn btn-link o_new_message" type="button"> New message </button>
+                          </div>
+                          <div class="o_mail_systray_dropdown_items"></div>
+                          
+                      </div>
+                  </li><li>
+              <a aria-expanded="false" class="dropdown-toggle o_install_web_studio" data-toggle="dropdown" href="#" title="Customization">
+                <img alt="" src="web_studio/static/src/img/studio_icon_small.png" width="12px">
+              </a>
+              <ul class="dropdown-menu" role="menu" style="width:250px">
+                <li>
+                  <div style="color:#666; margin:5px;">
+                    <p>Odoo Studio is not installed yet.</p>
+                    <a class="btn btn-primary btn-block open_install_web_studio" href="javascript:" style="margin: 5px 0">Install Odoo Studio</a>
+                    <p>Odoo Studio lets you customize screens and menus in a simple and graphical way.</p>
+                  </div>
+                  <a href="https://www.youtube.com/watch?v=xCvFZrrQq7k" style="padding: 0;" target="_blank">
+                      <img alt="Link to Odoo Studio Video" src="saas_trial/static/img/studio_video_link.jpg" style="max-width: 100%;">
+                  </a>
+                </li>
+              </ul>
+              </li><li class="o_user_menu">
+                  <a aria-expanded="false" class="dropdown-toggle" data-display="static" data-toggle="dropdown" href="#" role="button">
+                      <img alt="Avatar" class="rounded-circle oe_topbar_avatar" src="https://minhnguyen1.odoo.com/web/image?model=res.users&amp;field=image_small&amp;id=2">
+                      <span class="oe_topbar_name">hongkongiotw@gmail.com</span>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" role="menu">
+                      
+              <a class="dropdown-item" data-menu="documentation" href="#" role="menuitem">Documentation</a>
+              <a class="dropdown-item" data-menu="support" href="#" role="menuitem">Support</a>
+              
+                  <a class="dropdown-item d-none d-md-inline-block" data-menu="shortcuts" href="#" role="menuitem">Shortcuts</a>
+              <div class="dropdown-divider" role="separator"></div>
+              <a class="dropdown-item" data-menu="settings" href="#" role="menuitem">Preferences</a>
+              <a class="dropdown-item" data-menu="account" href="#" role="menuitem">My Odoo.com account</a>
+              <a class="dropdown-item" data-menu="logout" href="#" role="menuitem">Log out</a>
+                      <a class="dropdown-item d-none" data-menu="shortcut" href="#">Add to Home Screen</a>
+                      <a class="dropdown-item d-none" data-menu="switch" href="#"> Switch/Add Account</a>
+                  
+          
+                  </div>
+              </li></ul>
+              </nav>
+          </header>
+          
         <router-outlet></router-outlet>
-      </div>
+      <!-- </div>
     </div>
-  </div>
+  </div> -->

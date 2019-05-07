@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from '../login/login.component';
-import { RegisterComponent } from '../register/register.component'
+// import { LoginComponent } from '../login/login.component';
+// import { RegisterComponent } from '../register/register.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { EmployeeComponent } from '../employee/employee.component';
 import { ProfileComponent } from '../profile/profile.component';
@@ -17,22 +17,24 @@ import { DetailemployeecontactComponent } from '../detailemployeecontact/detaile
 import { DetailemployeematureComponent } from '../detailemployeemature/detailemployeemature.component';
 import { DetailemployeehealthyComponent } from '../detailemployeehealthy/detailemployeehealthy.component';
 import { EmployeeloginComponent } from '../employeelogin/employeelogin.component';
+import { EmployeeAllrecordComponent } from '../employee-allrecord/employee-allrecord.component';
 const routes: Routes = [ 
   {
   path: '',
-  component: LoginComponent
-  },{
-    path: '404-page-not-working',
-    component: Page404Component
+  component: DashboardComponent
   },
   {
     path: 'profile',
     component: ProfileComponent
   },
   {
-    path: 'register',
-    component: RegisterComponent
+    path: 'employee-allrecord',
+    component: EmployeeAllrecordComponent
   },
+  // {
+  //   path: 'register',
+  //   component: RegisterComponent
+  // },
   {
     path: 'dashboard',
     component: DashboardComponent
