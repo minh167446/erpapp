@@ -5,6 +5,10 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { PageEvent, MatTableDataSource, MatPaginator, MatDialog,  } from '@angular/material';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import  { DataSource } from '@angular/cdk/collections';
+import { EmployeeserviceService } from '../employeeservice.service';
+import { Employee } from '../interface/employee.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-employee',
@@ -13,6 +17,8 @@ import Swal from 'sweetalert2';
 })
 
 export class EmployeeComponent implements OnInit {
+  dataSource = new EmployeeDataSource(this.employeeService);
+  displayedColumns = ['fullname', 'email', 'department', 'hiredDate'];
   employees: any;
   // total: number = 0;
   // limit: number = 5;
@@ -21,7 +27,7 @@ export class EmployeeComponent implements OnInit {
   active: boolean =false;
   key: string;
   // @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor(public dialog: MatDialog,private activatedRoute: ActivatedRoute,private http:HttpClient, private data: DataService, private router: Router) {}
+  constructor(private employeeService: EmployeeserviceService ,public dialog: MatDialog,private activatedRoute: ActivatedRoute,private http:HttpClient, private data: DataService, private router: Router) {}
   
   getHeaders() {
     const token = localStorage.getItem('token');
@@ -31,15 +37,16 @@ export class EmployeeComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      let options = { headers: this.getHeaders() };
-      const data = await this.http.get(
-        'http://localhost:3000/api/employees', options
-      ).subscribe(
-        res=>this.employees = res
-        // this.employees = res
-          // this.employees = [...res.employees.docs].slice(0,5);
-          // this.total = res.employees.docs.length;        
-    );
+    //   let options = { headers: this.getHeaders() };
+    //   const data = await this.http.get(
+    //     'http://localhost:3000/api/employees', options
+    //   ).subscribe(
+    //     res=>this.employees = res
+    //     // this.employees = res
+    //       // this.employees = [...res.employees.docs].slice(0,5);
+    //       // this.total = res.employees.docs.length;        
+    // );
+    console.log(this.dataSource);
     } catch (error) {
       this.data.error(error['message']);
     }
@@ -138,5 +145,17 @@ export class EmployeeComponent implements OnInit {
   //         this.employees = [...res.employees.docs].slice((this.page-1)*this.limit,(this.page-1)*this.limit+6);
   //       })
   // }
+}
+
+export class EmployeeDataSource extends DataSource<any> {
+  constructor(private employeeService: EmployeeserviceService) {
+    super();
+  }
+
+  connect(): Observable<Employee[]> {
+    return this.employeeService.getEmployee();
+  }
+
+  disconnect() {}
 }
 

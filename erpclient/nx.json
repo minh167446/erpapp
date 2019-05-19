@@ -1,0 +1,21 @@
+{
+  "npmScope": "erpclient",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "erpclient": {
+      "tags": []
+    },
+    "erpclient-e2e": {
+      "tags": []
+    },
+    "api": {
+      "tags": []
+    }
+  }
+}

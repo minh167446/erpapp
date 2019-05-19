@@ -60,6 +60,7 @@ import { DetailemployeecontactComponent } from './detailemployeecontact/detailem
 import { DetailemployeematureComponent } from './detailemployeemature/detailemployeemature.component';
 import { DetailemployeehealthyComponent } from './detailemployeehealthy/detailemployeehealthy.component';
 import { EmployeeloginComponent } from './employeelogin/employeelogin.component';
+import { NxModule } from '@nrwl/nx';
 
 @NgModule({
   declarations: [
@@ -122,7 +123,8 @@ import { EmployeeloginComponent } from './employeelogin/employeelogin.component'
     ReactiveFormsModule,
     NgbModule.forRoot(),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NxModule.forRoot()
   ],
   entryComponents: [ DeleteaempComponent ],
   providers: [RestApiService, DataService, MatDatepickerModule],

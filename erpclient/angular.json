@@ -1,11 +1,11 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "",
   "projects": {
     "erpclient": {
-      "root": "",
-      "sourceRoot": "src",
+      "root": "apps\\erpclient",
+      "sourceRoot": "apps/erpclient/src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {},
@@ -13,19 +13,19 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/erpclient",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "outputPath": "dist\\apps\\erpclient",
+            "index": "apps/erpclient/src/index.html",
+            "main": "apps/erpclient/src/main.ts",
+            "polyfills": "apps/erpclient/src/polyfills.ts",
+            "tsConfig": "apps\\erpclient\\tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets",
-			  "src/web.config"
+              "apps/erpclient/src/favicon.ico",
+              "apps/erpclient/src/assets",
+              "apps/erpclient/src/web.config"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.css"
+              "apps/erpclient/src/styles.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -34,8 +34,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "apps/erpclient/src/environments/environment.ts",
+                  "with": "apps/erpclient/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -77,18 +77,18 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
+            "main": "apps/erpclient/src/test.ts",
+            "polyfills": "apps/erpclient/src/polyfills.ts",
+            "tsConfig": "apps\\erpclient\\tsconfig.spec.json",
+            "karmaConfig": "apps\\erpclient\\karma.conf.js",
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.css"
+              "apps/erpclient/src/styles.css"
             ],
             "scripts": [],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "apps/erpclient/src/favicon.ico",
+              "apps/erpclient/src/assets"
             ]
           }
         },
@@ -96,8 +96,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "apps\\erpclient\\tsconfig.app.json",
+              "apps\\erpclient\\tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -107,14 +107,14 @@
       }
     },
     "erpclient-e2e": {
-      "root": "e2e/",
+      "root": "apps\\erpclient-e2e",
       "projectType": "application",
       "prefix": "",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "protractorConfig": "apps\\erpclient-e2e\\protractor.conf.js",
             "devServerTarget": "erpclient:serve"
           },
           "configurations": {
@@ -126,14 +126,75 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
+            "tsConfig": "apps\\erpclient-e2e\\tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
           }
         }
       }
+    },
+    "api": {
+      "root": "apps/api",
+      "sourceRoot": "apps/api/src",
+      "projectType": "application",
+      "prefix": "api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/builders:node-build",
+          "options": {
+            "outputPath": "dist/apps/api",
+            "main": "apps/api/src/main.ts",
+            "tsConfig": "apps/api/tsconfig.app.json",
+            "assets": [
+              "apps/api/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/src/environments/environment.ts",
+                  "with": "apps/api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/builders:node-execute",
+          "options": {
+            "buildTarget": "api:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/api/tsconfig.app.json",
+              "apps/api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/api/jest.config.js",
+            "tsConfig": "apps/api/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
-  "defaultProject": "erpclient"
+  "defaultProject": "erpclient",
+  "cli": {
+    "defaultCollection": "@nrwl/schematics"
+  }
 }
